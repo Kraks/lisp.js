@@ -18,9 +18,6 @@ var Env = function(params, args, outer) {
     this.set = function(name, val) {
         dict[name] = val;
     };
-    this.dump = function() {
-        console.log(dict);
-    };
 };
 
 var add_globals = function(env) {
@@ -135,9 +132,7 @@ var parse = read;
 
 var tokenize = function(s) {
     return _.filter(s.replace(/\(/g, " ( ").replace(/\)/g, " ) ").split(" "),
-    function(item) {
-        return ! _.isEmpty(item);    
-    });
+             function(item) { return !_.isEmpty(item); });
 };
 
 var read_from = function(tokens) {
