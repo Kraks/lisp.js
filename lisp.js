@@ -22,24 +22,13 @@ var Env = function(params, args, outer) {
 
 var add_globals = function(env) {
     var f_template = function(g) {
-        return function() {
-            var args = Array.prototype.slice.apply(arguments);
-            return _.reduce(args, g);
-        };
+        return function() { return _.reduce(Array.prototype.slice.apply(arguments), g); };
     };
     env.update({
-        "+":    f_template(function(x, y) {
-                    return x+y;
-                }),
-        "-":    f_template(function(x, y) {
-                    return x-y;
-                }),
-        "*":    f_template(function(x, y) {
-                    return x*y;
-                }),
-        "/":    f_template(function(x, y) {
-                    return x/y;
-                }),
+        "+":       f_template(function(x, y) { return x+y; }),
+        "-":       f_template(function(x, y) { return x-y; }),
+        "*":       f_template(function(x, y) { return x*y; }),
+        "/":       f_template(function(x, y) { return x/y; }),
         "not":     function(val) { return !val; },
         ">":       function(x, y) { return x > y; },
         "<":       function(x, y) { return x < y; },
@@ -120,13 +109,9 @@ var isa = function(s, type) {
     }
 };
 
-var Symbol = function(s) {
-    return s.toString();
-};
+var Symbol = function(s) { return s.toString(); };
 
-var read = function(s) {
-    return read_from(tokenize(s));
-};
+var read = function(s) { return read_from(tokenize(s)); };
 
 var parse = read;
 
