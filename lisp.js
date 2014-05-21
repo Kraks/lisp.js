@@ -25,7 +25,7 @@ var add_globals = function(env) {
         "-":       f_template(function(x, y) { return x-y; }),
         "*":       f_template(function(x, y) { return x*y; }),
         "/":       f_template(function(x, y) { return x/y; }),
-        "not":     function(val) { return !val; },
+        "not":     function(val)  { return !val; },
         ">":       function(x, y) { return x > y; },
         "<":       function(x, y) { return x < y; },
         ">=":      function(x, y) { return x >= y; },
@@ -33,15 +33,15 @@ var add_globals = function(env) {
         "=":       function(x, y) { return x === y; },
         "equal?":  function(x, y) { return x === y; },
         "eq?":     function(x, y) { return x == y; },
-        "length":  function(x) { return x.length },
+        "length":  function(x)    { return x.length },
         "cons":    function(x, y) { return [x].concat(y); },
-        "car":     function(x) { return x[0]; },
-        "cdr":     function(x) { return x.slice(1); },
+        "car":     function(x)    { return x[0]; },
+        "cdr":     function(x)    { return x.slice(1); },
         "append":  function(x, y) { x.push(y); return x; },
-        "list":    function() { return Array.prototype.slice.apply(arguments); },
-        "list?":   function(x) { return isa(x, "list"); },
-        "null?":   function(x) { return _.isEmpty(x); },
-        "symbol?": function(x) { return isa(x, "Symbol"); }
+        "list":    function()     { return Array.prototype.slice.apply(arguments); },
+        "list?":   function(x)    { return isa(x, "list"); },
+        "null?":   function(x)    { return _.isEmpty(x); },
+        "symbol?": function(x)    { return isa(x, "Symbol"); }
     });
     return env;
 };
