@@ -9,14 +9,10 @@ var Env = function(params, args, outer) {
         if (_.has(dict, name)) return that;
         return outer.find(name);
     };
-    this.update = function(new_dict) {
-        _.extend(dict, new_dict);
-    };
+    this.set = function(name, val) { dict[name] = val; };
+    this.update = function(new_dict) { _.extend(dict, new_dict); };
     this.get = function(name) {
         if (_.has(dict, name)) return dict[name];
-    };
-    this.set = function(name, val) {
-        dict[name] = val;
     };
 };
 
@@ -56,22 +52,12 @@ var eval = function(x, env) {
     if (env === void 0)
         env = global_env;
 
-    if (isa(x, "Symbol")) {
-        return env.find(x).get(x);
-    }
-    else if (!isa(x, "list")) {
-        return x;
-    }
-    else if (x[0] === "quote") {
-        return x[1];
-    }
+    if (isa(x, "Symbol")) { return env.find(x).get(x); }
+    else if (!isa(x, "list")) { return x; }
+    else if (x[0] === "quote") { return x[1]; }
     else if (x[0] === "if") {
-        if (eval(x[1], env)) {
-            return eval(x[2], env);
-        }
-        else {
-            return eval(x[3], env);
-        }
+        if (eval(x[1], env)) { return eval(x[2], env); }
+        else { return eval(x[3], env); }
     }
     else if (x[0] === "set!") {
         env.find(x[1]).set(x[1], eval(x[2], env));
