@@ -65,6 +65,15 @@ var eval = function(x, env) {
         var o = _.object(x[1]);
         return eval([eval(["lambda", _.keys(o), x[2]], env)].concat(_.values(o)), env);
     }
+    else if (x[0] === "let*") {
+        var env1 = new Env(null, null, env);
+        var t = _.map(_.object(x[1]), function(item, key) {
+            var result = eval(item, env1);
+            env1.set(key, result);
+            return [key, result];
+        });
+        return eval(["let", t, x[2]], env);
+    }
     else if (x[0] === "set!") {
         env.find(x[1]).set(x[1], eval(x[2], env));
     }
@@ -192,3 +201,4 @@ console.log(eval(parse("(or (equal? 1 2) (equal? 2 2))")));
 
 console.log(eval(parse("(let ((x 5)) x)")));
 console.log(eval(parse("(let ((x 5) (y 2)) (+ x y))"))); //7
+console.log(eval(parse("(let* ((x 5) (y (+ x 2))) (+ x y))"))); //12
