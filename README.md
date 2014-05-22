@@ -1,8 +1,10 @@
 # Lisp.js
 
-Inspired by Peter Norvig's [Lisp.py](http://norvig.com/lispy.html), I take two days and wrote a tiny lisp interpreter in JavaScript.
+Inspired by Peter Norvig's [Lisp.py](http://norvig.com/lispy.html), I take two days and wrote a tiny but powerful lisp interpreter in JavaScript.
 
-Meanwhile, I added support of `let`, `let*`, `cond`, `else`, `and`, `or` and some other syntax sugar. Now it could interpret a Y combinator!
+I improved arithmetic operator to support multiple parameter calculations, such as `(add 1 2 3 4)`, and added some syntax sugars like `let`, `let*`, `cond`, `else`, `and` and `or`. 
+
+Now it could interpret a Y combinator!
 
 Dependencies: [underscore.js](http://underscorejs.org)
 
