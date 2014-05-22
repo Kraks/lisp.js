@@ -79,9 +79,6 @@ var eval = function(x, env) {
     else if (x[0] === "cond") {
         return eval(_.find(x.slice(1), function(item) { return eval(item[0], env); })[1], env);
     }
-    else if (x[0] === "else") {
-        return eval(x[1], env);
-    }
     else if (x[0] === "set!") {
         env.find(x[1]).set(x[1], eval(x[2], env));
     }
