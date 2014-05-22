@@ -26,6 +26,8 @@ var add_globals = function(env) {
         "*":       f_template(function(x, y) { return x*y; }),
         "/":       f_template(function(x, y) { return x/y; }),
         "not":     function(val)  { return !val; },
+        "and":     function(x, y) { return x && y; },
+        "or":      function(x, y) { return x || y; },
         ">":       function(x, y) { return x > y; },
         "<":       function(x, y) { return x < y; },
         ">=":      function(x, y) { return x >= y; },
@@ -59,6 +61,10 @@ var eval = function(x, env) {
         if (eval(x[1], env)) { return eval(x[2], env); }
         else { return eval(x[3], env); }
     }
+    else if (x[0] === "let") {
+        var o = _.object(x[1]);
+        return eval([eval(["lambda", _.keys(o), x[2]], env)].concat(_.values(o)), env);
+    }
     else if (x[0] === "set!") {
         env.find(x[1]).set(x[1], eval(x[2], env));
     }
@@ -72,7 +78,7 @@ var eval = function(x, env) {
     }
     else if (x[0] === "begin") {
         var end = x.prototype.slice(-1);
-        _.item(x, function(ele) {
+        _.each(x, function(ele) {
             eval(ele, env);
         });
         return eval(end, env);
@@ -180,3 +186,9 @@ eval(parse("(define count (lambda (item L) (if (not (null? L)) (+ (equal? item (
 console.log(eval(parse("(count 2 (list 0 1 2 2 0 2))"))); //3
 
 console.log(eval(parse("(count 0 (list 0 1 2 3 0 2))"))); //2
+
+console.log(eval(parse("(and (equal? 1 2) (equal? 2 2))")));
+console.log(eval(parse("(or (equal? 1 2) (equal? 2 2))")));
+
+console.log(eval(parse("(let ((x 5)) x)")));
+console.log(eval(parse("(let ((x 5) (y 2)) (+ x y))"))); //7
