@@ -17,19 +17,19 @@ var Env = function(params, args, outer) {
 };
 
 var add_globals = function(env) {
-    var f_template = function(g) {
+    var r_template = function(g) {
         return function() { return _.reduce(Array.prototype.slice.apply(arguments), g); };
     };
     env.update({
         "else":    true,
         "#t":      true,
         "#f":      false,
-        "+":       f_template(function(x, y) { return x+y; }),
-        "-":       f_template(function(x, y) { return x-y; }),
-        "*":       f_template(function(x, y) { return x*y; }),
-        "/":       f_template(function(x, y) { return x/y; }),
-        "and":     f_template(function(x, y) { return x && y; }),
-        "or":      f_template(function(x, y) { return x || y; }),
+        "+":       r_template(function(x, y) { return x + y; }),
+        "-":       r_template(function(x, y) { return x - y; }),
+        "*":       r_template(function(x, y) { return x * y; }),
+        "/":       r_template(function(x, y) { return x / y; }),
+        "and":     r_template(function(x, y) { return x && y; }),
+        "or":      r_template(function(x, y) { return x || y; }),
         "not":     function(val)  { return !val; },
         ">":       function(x, y) { return x > y; },
         "<":       function(x, y) { return x < y; },
