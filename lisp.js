@@ -51,7 +51,6 @@ var add_globals = function(env) {
     return env;
 };
 
-var global_env = add_globals(new Env());
 
 var eval = function(x, env) {
     if (env === void 0)
@@ -116,11 +115,7 @@ var isa = function(s, type) {
     }
 };
 
-var Symbol = function(s) { return s.toString(); };
-
-var read = function(s) { return read_from(tokenize(s)); };
-
-var parse = read;
+var parse = function(s) { return read_from(tokenize(s)); };
 
 var tokenize = function(s) {
     return _.filter(s.replace(/[\r\t\n]/g, " ").replace(/\(/g, " ( ").replace(/\)/g, " ) ").split(" "),
@@ -150,7 +145,7 @@ var read_from = function(tokens) {
 var atom = function(token) {
     if (isNaN(parseFloat(token))) {
         if (isNaN(parseInt(token))) {
-            return Symbol(token);
+            return token.toString();
         }
         return parseInt(token);
     }
@@ -163,6 +158,8 @@ var to_string = function(exp) {
     }
     return exp.toString();
 };
+
+var global_env = add_globals(new Env());
 
 console.log(eval(parse("(+ 1 2 3)"))) // => 6
 console.log(eval(parse("(* 2 3 4)"))) // => 24
