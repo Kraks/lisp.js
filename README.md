@@ -6,6 +6,21 @@ I improved arithmetic operator to support multiple parameter calculations, such 
 
 Now it could interpret a Y combinator!
 
-Github: [Lisp.js](http://github.com/Kraks/lisp.js)
+How to use
+---
+install: 
+
+`# npm install lisp.js`
+
+start:
+
+`$ lispjs`
 
 Have fun!
+
+Licenses
+---
+MIT
+
+Github: [Lisp.js](http://github.com/Kraks/lisp.js)
+
