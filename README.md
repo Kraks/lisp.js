@@ -8,6 +8,4 @@ Now it could interpret a Y combinator!
 
 Github: [Lisp.js](http://github.com/Kraks/lisp.js)
 
-Dependencies: [underscore.js](http://underscorejs.org)
-
 Have fun!
