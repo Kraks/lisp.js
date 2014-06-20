@@ -1,0 +1,12 @@
+{
+    "name": "lisp.js",
+    "version": "0.0.1",
+    "description": "A tiny lisp interpreter",
+    "author": "Guannan Wei",
+    "engines": {
+        "node": "*"
+    },
+    "dependencies": {
+        "underscore": "*"
+    }
+}
