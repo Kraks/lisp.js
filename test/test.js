@@ -1,4 +1,4 @@
-var lisp = require('./lisp');
+var lisp = require('../lib/lisp.js');
 var eval = lisp.eval;
 var parse = lisp.parse;
 

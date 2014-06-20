@@ -3,6 +3,10 @@
     "version": "0.0.1",
     "description": "A tiny lisp interpreter",
     "author": "Guannan Wei",
+    "keywords": [
+        "lisp",
+        "interpreter"
+    ],
     "engines": {
         "node": "*"
     },
