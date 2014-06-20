@@ -2,6 +2,7 @@
 /* Author: Guannan Wei
  */
 
+var _ = require('underscore');
 var readline = require('readline');
 var lisp = require('./lib/lisp.js');
 var eval = lisp.eval;
@@ -13,7 +14,8 @@ rl.setPrompt("> ");
 rl.prompt();
 rl.on('line', function(line) {
     var res = eval(parse(line.trim()));
-    if (res) console.log(toString(res));
+    if (!_.isUndefined(res))
+        console.log(toString(res));
     rl.prompt();
 }).on('close', function() {
     console.log('Bye');
