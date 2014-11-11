@@ -21,4 +21,3 @@ rl.on('line', function(line) {
     console.log('Bye');
     process.exit(0);
 });
-
