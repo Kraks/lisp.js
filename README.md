@@ -16,6 +16,10 @@ start:
 
 `$ lispjs`
 
+read code from files:
+
+`$ lispjs file1 file2 ...`
+
 Have fun!
 
 Licenses
