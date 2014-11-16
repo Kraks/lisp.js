@@ -1,6 +1,6 @@
 {
     "name": "lisp.js",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "A tiny lisp interpreter",
     "author": "Kraks <kiss.kraks@gmail.com>",
     "repository": "git://github.com/Kraks/lisp.js",
