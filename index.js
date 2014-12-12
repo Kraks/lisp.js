@@ -1,5 +1,6 @@
 #! /usr/bin/env node
-/* Author: Guannan Wei
+/** Lisp.js
+ *  Author: Guannan Wei <kiss.kraks@gmail.com>
  */
 
 var _ = require('underscore');
